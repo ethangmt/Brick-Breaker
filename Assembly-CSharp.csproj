@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\ball.cs" />
      <Compile Include="Assets\Scripts\levelManager.cs" />
+     <Compile Include="Assets\Scripts\menuManager.cs" />
      <Compile Include="Assets\Scripts\paddleMove.cs" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>

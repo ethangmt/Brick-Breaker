@@ -5,12 +5,12 @@ using UnityEngine;
 public class ball : MonoBehaviour {
 
 	public float speed = 30;
-	public Rigidbody2D rigidBody;
+	Rigidbody2D rigidBody;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
-		rigidBody.velocity = Vector2.up * speed;
+		speedUp ();
 	}
 
 	void OnCollisionEnter2D (Collision2D col) {
@@ -18,7 +18,7 @@ public class ball : MonoBehaviour {
 			handlePaddleHit (col);
 		}
 
-		if (col.gameObject.name == "wallButtom") {
+		if (col.gameObject.name == "wallBottom") {
 			// Exit
 			Application.Quit ();
 		}
@@ -34,6 +34,19 @@ public class ball : MonoBehaviour {
 		float paddleW = col.collider.bounds.size.x;
 		float x = (ballX - paddleX) / paddleW;
 		rigidBody.velocity = new Vector2 (x, 1) * speed;
+	}
+
+	public void speedUp () {
+		GetComponent<Rigidbody2D> ().velocity = Vector2.up * speed;
+	}
+
+	public void freeze () {
+		GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
+	}
+
+	public void resume () {
+		GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeRotation;
+		speedUp ();
 	}
 
 	// Update is called once per frame
