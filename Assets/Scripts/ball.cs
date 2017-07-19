@@ -13,18 +13,22 @@ public class ball : MonoBehaviour {
 		speedUp ();
 	}
 
-	void OnCollisionEnter2D (Collision2D col) {
+	IEnumerator OnCollisionEnter2D (Collision2D col) {
 		if (col.gameObject.name == "paddle") {
 			handlePaddleHit (col);
 		}
 
 		if (col.gameObject.name == "wallBottom") {
 			// Exit
-			Application.Quit ();
+			//UnityEditor.EditorApplication.isPlaying = false;
+			//Application.Quit ();
+			Destroy (GameObject.Find("paddle"));
+			Destroy (gameObject);
 		}
 
 		if (col.gameObject.tag == "brick") {
 			Destroy (col.collider.gameObject);
+			yield return new WaitForSecondsRealtime (.2f);
 		}
 	}
 

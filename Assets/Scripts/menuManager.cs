@@ -7,6 +7,7 @@ public class menuManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Screen.SetResolution (800, 455, false);
 	}
 	
 	// Update is called once per frame
